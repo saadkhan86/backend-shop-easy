@@ -1,0 +1,41 @@
+# backend/railway.toml
+
+[build]
+builder = "nixpacks"
+buildCommand = "npm install"
+watchPaths = [
+  "package.json",
+  "package-lock.json",
+  "server.js",
+  "index.js",
+  "app.js",
+  "src/**",
+  "routes/**",
+  "controllers/**",
+  "models/**",
+  "middlewares/**"
+]
+
+[deploy]
+startCommand = "node server.js"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 300
+restartPolicy = "on-failure"
+restartPolicyMaxRetries = 10
+
+[variables]
+PORT = "3000"
+NODE_ENV = "production"
+
+# Required variables (set these in Railway dashboard)
+MONGO_URI = "required"
+JWT_SECRET = "required"
+CLIENT_URL = "required"
+
+[environments.production]
+# Production-specific overrides
+NODE_ENV = "production"
+
+[environments.development]
+# Development-specific overrides  
+NODE_ENV = "development"
