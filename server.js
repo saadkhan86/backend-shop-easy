@@ -12,7 +12,7 @@ const cartRoutes = require("./routes/cart");
 const passwordRoutes = require("./routes/password");
 const adminRoutes = require("./routes/admin"); // Admin routes
 
-const app = express()
+const app = express();
 // Middleware
 app.use(
   cors({
@@ -166,12 +166,8 @@ app.get("/api/admin/test", (req, res) => {
 // Health check route
 app.get("/api/health", (req, res) => {
   res.json({
-    success: true,
     status: "OK",
     timestamp: new Date().toISOString(),
-    uptime: process.uptime(),
-    database: "Connected",
-    memory: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`,
   });
 });
 
