@@ -122,7 +122,7 @@ app.get("/admin", (req, res) => {
 
 // Development route to delete all products (for testing)
 app.get("/delete/products/all", async (req, res) => {
-  const Product = require("./models/Product");
+  const Product = require("./models/product");
   if (process.env.NODE_ENV === "production") {
     return res.status(403).json({
       success: false,
